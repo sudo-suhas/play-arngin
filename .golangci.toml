@@ -1,0 +1,84 @@
+# Configuration for golangci-lint
+# See https://github.com/golangci/golangci-lint#config-file
+
+# options for analysis running
+[run]
+# timeout for analysis, e.g. 30s, 5m, default is 1m
+deadline = "1m"
+
+# all available settings of specific linters
+[linters-settings]
+
+	[linters-settings.govet]
+	# report about shadowed variables
+	check-shadowing = true
+
+	[linters-settings.dupl]
+	# tokens count to trigger issue, 150 by default
+	threshold = 100
+
+	[linters-settings.goconst]
+	# minimal length of string constant, 3 by default
+	min-len = 3
+	# minimal occurrences count to trigger, 3 by default
+	min-occurrences = 3
+
+	[linters-settings.nakedret]
+	# make an issue if func has more lines of code than this setting and it has naked returns; default is 30
+	max-func-lines = 30
+
+	[linters-settings.prealloc]
+	# Report preallocation suggestions only on simple loops that have no returns/breaks/continues/gotos in them.
+    # True by default.
+	simple = false
+
+	# Report preallocation suggestions on range loops, true by default
+	range-loops = true
+
+	# Report preallocation suggestions on for loops, false by default
+	for-loops = true
+
+[linters]
+enable = [
+	"govet",
+	"errcheck",
+	"golint",
+	"goconst",
+	"gofmt",
+	"megacheck",
+	"misspell"
+]
+enable-all = false
+
+# delegate staticcheck, unused, gosimple to megacheck
+# run slow linters only on CI
+# i.e gas, varcheck, ineffassign, deadcode, typecheck, unconvert, unparam, prealloc
+disable = [
+	"dupl",
+	"staticcheck",
+	"unused",
+	"gosimple",
+	"gas",
+	"structcheck",
+	"varcheck",
+	"ineffassign",
+	"deadcode",
+	"typecheck",
+	"interfacer",
+	"unconvert",
+	"gocyclo",
+	"goimports",
+	"maligned",
+	"depguard",
+	"lll",
+	"unparam",
+	"nakedret",
+	"prealloc"
+]
+disable-all = false
+fast = false
+
+[issues]
+exclude=[
+	'declaration of "(err|ctx)" shadows declaration at'
+]

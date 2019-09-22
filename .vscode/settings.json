@@ -1,0 +1,30 @@
+{
+	"files.eol": "\n",
+	"files.autoSave": "afterDelay",
+	"files.autoSaveDelay": 30000,
+	"editor.insertSpaces": false,
+	"go.testFlags": ["-v"],
+	"[go]": {
+		"editor.snippetSuggestions": "none",
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true
+		}
+	},
+	"go.inferGopath": false,
+	"go.useLanguageServer": true,
+	"go.lintTool": "golangci-lint",
+	"go.vetOnSave": "off",
+	"go.lintFlags": ["--new"],
+	"gopls": {
+		"usePlaceholders": true, // add parameter placeholders when completing a function
+		"completionDocumentation": true // for documentation in completion items
+	},
+	"go.addTags": {
+		"tags": "json",
+		"options": "json=omitempty",
+		"promptForTags": false,
+		"transform": "camelcase"
+	},
+	"prettier.useTabs": true
+}

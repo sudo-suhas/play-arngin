@@ -1,0 +1,94 @@
+# Configuration for golangci-lint
+# See https://github.com/golangci/golangci-lint#config-file
+
+# options for analysis running
+[run]
+# timeout for analysis, e.g. 30s, 5m, default is 1m
+deadline = "10m"
+
+# by default isn't set. If set we pass it to "go list -mod={option}". From "go help modules":
+# If invoked with -mod=readonly, the go command is disallowed from the implicit
+# automatic updating of go.mod described above. Instead, it fails when any changes
+# to go.mod are needed. This setting is most useful to check that go.mod does
+# not need updates, such as in a continuous integration and testing system.
+# If invoked with -mod=vendor, the go command assumes that the vendor
+# directory holds the correct copies of dependencies and ignores
+# the dependency descriptions in go.mod.
+modules-download-mode = "readonly"
+
+# all available settings of specific linters
+[linters-settings]
+
+	[linters-settings.govet]
+	# report about shadowed variables
+	check-shadowing = true
+
+	[linters-settings.dupl]
+	# tokens count to trigger issue, 150 by default
+	threshold = 100
+
+	[linters-settings.goconst]
+	# minimal length of string constant, 3 by default
+	min-len = 3
+	# minimal occurrences count to trigger, 3 by default
+	min-occurrences = 3
+
+	[linters-settings.nakedret]
+	# make an issue if func has more lines of code than this setting and it has naked returns; default is 30
+	max-func-lines = 30
+
+	[linters-settings.prealloc]
+	# Report preallocation suggestions only on simple loops that have no returns/breaks/continues/gotos in them.
+    # True by default.
+	simple = false
+
+	# Report preallocation suggestions on range loops, true by default
+	range-loops = true
+
+	# Report preallocation suggestions on for loops, false by default
+	for-loops = true
+
+[linters]
+enable = [
+	"govet",
+	"errcheck",
+	"golint",
+	"gofmt",
+	"megacheck",
+	"gas",
+	"varcheck",
+	"ineffassign",
+	"deadcode",
+	"typecheck",
+	"unconvert",
+	"unparam",
+	"prealloc"
+]
+enable-all = false
+
+# delegate staticcheck, unused, gosimple to megacheck
+# run slow linters only on CI
+# i.e gas, varcheck, ineffassign, deadcode, typecheck, unconvert, unparam, prealloc
+disable = [
+	"dupl",
+	"goconst",
+	"staticcheck",
+	"unused",
+	"gosimple",
+	"structcheck",
+	"interfacer",
+	"gocyclo",
+	"goimports",
+	"maligned",
+	"depguard",
+	"lll",
+	"nakedret",
+	"misspell"
+]
+disable-all = false
+fast = false
+
+[issues]
+exclude=[
+	'declaration of "(err|ctx)" shadows declaration at'
+]
