@@ -13,5 +13,7 @@ require (
 	github.com/open-policy-agent/opa v0.14.1
 	github.com/rcrowley/go-metrics v0.0.0-20190826022208-cac0b30c2563 // indirect
 	github.com/yashtewari/glob-intersection v0.0.0-20180916065949-5c77d914dd0b // indirect
+	golang.org/x/sync v0.0.0-20190227155943-e225da77a7e6
+	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 	gopkg.in/yaml.v2 v2.2.4 // indirect
 )

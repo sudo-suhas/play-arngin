@@ -12,3 +12,10 @@ type Engine interface {
 	// into the rule engine.
 	RunQuery(ctx context.Context, q AddonsQ) ([]string, error)
 }
+
+// Engine names
+const (
+	Opa     = "opa"
+	Arango  = "arango"
+	Elastic = "elastic"
+)

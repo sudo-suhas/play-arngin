@@ -17,3 +17,7 @@
 **/*.log
 .playground
 
+# Binary for linux, mac
+arngin
+!cmd/arngin
+bin
