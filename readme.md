@@ -50,6 +50,26 @@ Commands:
 
 ```
 
+### Engines
+
+The playground has multiple implementations of the
+[`Engine` interface](engine_iface.go) with the objective of comparing the
+performance of loading rules and running queries. with the following:
+
+- [`engine/opa`](engine/opa): _[Open Policy Agent][opa] is an open source,
+  general-purpose policy engine that unifies policy enforcement across the
+  stack._ The rules and match criteria are expressed in [Rego][rego], OPA’s
+  policy language.
+- [`engine/arango`](engine/arango): _[ArangoDB][arangodb] is a multi-model,
+  open-source database with flexible data models for documents, graphs, and
+  key-values._ Rules are stored in ArangoDB and [AQL][aql] is used to match the
+  rules against the query.
+- [`engine/elasticsearch`](engine/elasticsearch):
+  _[Elasticsearch][elasticsearch] is a distributed, RESTful search and analytics
+  engine._ Rules are stored as documents and the [Elasticsearch query
+  DSL][es-query-dsl] and [aggregations][es-aggs] are used to match the rules
+  against the query.
+
 ### Examples
 
 ```
@@ -71,3 +91,12 @@ Ran 1000 queries with concurrency of 10 against elastic [avg: 7.499732ms]
 
 [go-install]: https://golang.org/doc/install
 [go-modules]: https://blog.golang.org/modules2019
+[opa]: https://www.openpolicyagent.org/docs/latest/
+[rego]: https://www.openpolicyagent.org/docs/latest/policy-language/
+[arangodb]: https://www.arangodb.com/docs/stable/
+[aql]: https://www.arangodb.com/docs/stable/aql/
+[elasticsearch]: https://www.elastic.co/products/elasticsearch
+[es-query-dsl]:
+	https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+[es-aggs]:
+	https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html
